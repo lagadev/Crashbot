@@ -15,7 +15,7 @@ not_found_handling = "single-page-application"
 [[d1_databases]]
 binding = "DB"
 database_name = "crash_bot_db"
-database_id = "REPLACE_WITH_YOUR_NEW_D1_DATABASE_ID"
+database_id = "6cd71b06-0900-4246-a367-f7421995d0fd"
 
 # ---- Durable Object ----
 [[durable_objects.bindings]]
@@ -40,7 +40,7 @@ APP_SHORT_NAME = ""
 MIN_WITHDRAW_STARS = "50"
 HOUSE_EDGE = "0.03"
 # Comma-separated Telegram user ids that see the "Admin Panel" keyboard button.
-ADMIN_TELEGRAM_IDS = "123456789"
+ADMIN_TELEGRAM_IDS = "6040791692"
 
 # Secrets:
 # BOT_TOKEN
