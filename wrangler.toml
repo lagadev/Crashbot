@@ -1,0 +1,49 @@
+name = "crash-game-bot"
+main = "src/index.ts"
+compatibility_date = "2024-09-25"
+compatibility_flags = ["nodejs_compat"]
+
+# ---- Static frontend (Mini App UI) ----
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+# ---- D1 Database ----
+# A brand new, independent database - no connection to any other project.
+# Create it with: npx wrangler d1 create crash_bot_db
+[[d1_databases]]
+binding = "DB"
+database_name = "crash_bot_db"
+database_id = "REPLACE_WITH_YOUR_NEW_D1_DATABASE_ID"
+
+# ---- Durable Object ----
+[[durable_objects.bindings]]
+name = "CRASH_ROOM"
+class_name = "CrashRoom"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["CrashRoom"]
+
+# ---- Cron ----
+[triggers]
+crons = ["*/30 * * * *"]
+
+[vars]
+BOT_USERNAME = "your_bot_username"
+# Optional: your Mini App's short name from @BotFather (Bot Settings > Mini App),
+# so referral links open the app directly instead of the bot chat:
+# https://t.me/<BOT_USERNAME>/<APP_SHORT_NAME>?startapp=ref_<id>
+# Leave blank to just use https://t.me/<BOT_USERNAME>?startapp=ref_<id>.
+APP_SHORT_NAME = ""
+MIN_WITHDRAW_STARS = "50"
+HOUSE_EDGE = "0.03"
+# Comma-separated Telegram user ids that see the "Admin Panel" keyboard button.
+ADMIN_TELEGRAM_IDS = "123456789"
+
+# Secrets:
+# BOT_TOKEN
+# ADMIN_KEY
+# TON_API_KEY       - optional, higher TonCenter rate limits
+# UGLYPAY_API_KEY   - your TK payment gateway API key (from its /keys.html page)
